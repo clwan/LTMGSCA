@@ -1,0 +1,13 @@
+Package: LTMGSCA
+Type: Package
+Title: Left Truncated Mixture Gaussian Single Cell Analysis Model
+Version: 0.1.0
+Author: Changlin Wan
+Maintainer: Changlin Wan <wancl0422@gmail.com>
+Description: More about what it does (maybe more than one line)
+    Use four spaces when indenting paragraphs within the Description.
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
+Depends: R (>= 3.5.0)
+Imports: Rcpp (>= 0.11.0), Matrix, ggplot2, ggpubr, mixtools, AdaptGauss, Rtsne, stats, RColorBrewer, dplyr, RSpectra, proxy
