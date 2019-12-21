@@ -123,13 +123,13 @@ cells in each expression state, respect the cell types.
     ### Visualize the LTMG gene expression distribution
     plot_gene(VEC = VEC,Data_LTMG = VEC_LTMG,Zcut = Zcut_G)
 
-![](LTMG_files/figure-markdown_strict/Visualize%20Expression%20State-1.png)
+![](LTMG_files/figure-markdown_strict/Gene_hist.png)
 
     ### Visualize the cell type distribution on expression state
     load("Melanoma_cell.RData")
     plot_dot(VEC = VEC,Data_LTMG = VEC_LTMG,cell_key = cell_key,Zcut = Zcut_G,Gene=Gene)
 
-![](LTMG_files/figure-markdown_strict/Visualize%20Expression%20State-2.png)
+![](LTMG_files/figure-markdown_strict/Gene_dot.png)
 
 Better Low Dimensional Visulization
 -----------------------------------
