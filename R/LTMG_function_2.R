@@ -9,6 +9,7 @@ library(RColorBrewer)
 library(dplyr)
 library(RSpectra)
 library(proxy)
+library(SwarmSVM)
 
 ExtractField<-function(VEC,field,delim){
   return(unlist(strsplit(VEC,split = delim,fixed = T))[field])
@@ -572,6 +573,10 @@ LTMG_MAT<-function(MAT,Zcut_G,Gene_use,k=5){
 }
 
 
+DIS_LTMG<-function(x,y){
+  return(exp(-sum((x-y)^2)))
+}
+
 LTMG_tsne<-function(File_LTMG,dims=2,perplexity=30,max_iter=5000,partial_pca = F){
   MAT<-t(as.matrix(File_LTMG$State))
   MAT_copy<-NULL
@@ -641,8 +646,8 @@ Plot_Cluster<-function(Data_LTMG,Plot_Legend=FALSE,Plot_Label=FALSE){
   }
   if(Plot_Label){
     for (i in 1:length(Cell_label)) {
-      text(x=Data_LTMG$tSNE[names(Data_LTMG$cluster)[Data_LTMG$cluster==Cell_label[i]],1],
-           y=Data_LTMG$tSNE[names(Data_LTMG$cluster)[Data_LTMG$cluster==Cell_label[i]],2],
+      text(x=mean(Data_LTMG$tSNE[names(Data_LTMG$cluster)[Data_LTMG$cluster==Cell_label[i]],1]),
+           y=mean(Data_LTMG$tSNE[names(Data_LTMG$cluster)[Data_LTMG$cluster==Cell_label[i]],2]),
            Cell_label[i],cex=1.5)
     }
   }
