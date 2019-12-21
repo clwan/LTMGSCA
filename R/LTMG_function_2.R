@@ -635,8 +635,8 @@ Plot_Cluster<-function(Data_LTMG,Plot_Legend=FALSE,Plot_Label=FALSE){
        ylab = "t-SNE 2",
        bty='L')
   for (i in 2:length(Cell_label)) {
-    points(x=mean(Data_LTMG$tSNE[names(Data_LTMG$cluster)[Data_LTMG$cluster==Cell_label[i]],1]),
-           y=mean(Data_LTMG$tSNE[names(Data_LTMG$cluster)[Data_LTMG$cluster==Cell_label[i]],2]),
+    points(x=Data_LTMG$tSNE[names(Data_LTMG$cluster)[Data_LTMG$cluster==Cell_label[i]],1],
+           y=Data_LTMG$tSNE[names(Data_LTMG$cluster)[Data_LTMG$cluster==Cell_label[i]],2],
            pch=18,cex=0.7,col=cl[i])
   }
   if(Plot_Legend){
