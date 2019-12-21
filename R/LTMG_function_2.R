@@ -658,12 +658,9 @@ LTMG_Cluster<-function(File_LTMG,Cut=1e-5,Cluster_size=10){
     File_LTMG<-LTMG_tsne(File_LTMG = File_LTMG)
   }
 
-  DIS_LTMG<-function(x,y){
-    return(exp(-sum((x-y)^2)))
-  }
 
   if(is.null(File_LTMG$Z)){
-    Data_Dis<-as.matrix(proxy::dist(File_LTMG$tSNE,method = DIS_LTMG))
+    Data_Dis<-as.matrix(gausskernel(File_LTMG$tSNE,sigma = 1))
     diag(Data_Dis)<-1
     S<-Data_Dis
     L<-diag(colSums(S))-S
