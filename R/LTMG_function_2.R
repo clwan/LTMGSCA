@@ -635,8 +635,13 @@ Plot_Cluster<-function(Data_LTMG,Plot_Legend=FALSE,Plot_Label=FALSE){
        ylab = "t-SNE 2",
        bty='L')
   for (i in 2:length(Cell_label)) {
+<<<<<<< HEAD
     points(x=mean(Data_LTMG$tSNE[names(Data_LTMG$cluster)[Data_LTMG$cluster==Cell_label[i]],1]),
            y=mean(Data_LTMG$tSNE[names(Data_LTMG$cluster)[Data_LTMG$cluster==Cell_label[i]],2]),
+=======
+    points(x=Data_LTMG$tSNE[names(Data_LTMG$cluster)[Data_LTMG$cluster==Cell_label[i]],1],
+           y=Data_LTMG$tSNE[names(Data_LTMG$cluster)[Data_LTMG$cluster==Cell_label[i]],2],
+>>>>>>> 8aedb353775aa3ce1e0aa1b69dd00754883d9bf1
            pch=18,cex=0.7,col=cl[i])
   }
   if(Plot_Legend){
@@ -731,8 +736,8 @@ LTMG_Diff<-function(Data_LTMG,Label,TOP){
   for (i in 1:length(Label_uniq)) {
     MAT1<-Data_LTMG[[1]][,names(Label)[(Label==Label_uniq[i])]]
     MAT2<-Data_LTMG[[1]][,names(Label)[(Label!=Label_uniq[i])]]
-    MAT1<-MAT1[rowSums(MAT1)>0,]
-    MAT2<-MAT2[rowSums(MAT2)>0,]
+    MAT1<-MAT1[Matrix::rowSums(MAT1)>0,]
+    MAT2<-MAT2[Matrix::rowSums(MAT2)>0,]
     ROW<-intersect(rownames(MAT1),rownames(MAT2))
     MAT1<-MAT1[ROW,]
     MAT2<-MAT2[ROW,]
