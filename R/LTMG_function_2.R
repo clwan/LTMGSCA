@@ -731,8 +731,8 @@ LTMG_Diff<-function(Data_LTMG,Label,TOP){
   for (i in 1:length(Label_uniq)) {
     MAT1<-Data_LTMG[[1]][,names(Label)[(Label==Label_uniq[i])]]
     MAT2<-Data_LTMG[[1]][,names(Label)[(Label!=Label_uniq[i])]]
-    MAT1<-MAT1[rowSums(MAT1)>0,]
-    MAT2<-MAT2[rowSums(MAT2)>0,]
+    MAT1<-MAT1[Matrix::rowSums(MAT1)>0,]
+    MAT2<-MAT2[Matrix::rowSums(MAT2)>0,]
     ROW<-intersect(rownames(MAT1),rownames(MAT2))
     MAT1<-MAT1[ROW,]
     MAT2<-MAT2[ROW,]
