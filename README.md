@@ -104,11 +104,11 @@ We will use the melanoma dataset to illustrate the functionalities in
 the following sections. <br> The most important functionality of LTMG is
 to fit the gene expression with mixture guassian distribution. Such
 that, gene expression state can be viewed as the different Guassian
-peaks. <br> Here we fit the CD8B gene expression in melanoma. As
-illustrated in the histgram, CD8B gene expression is fitted by three
+peaks. <br> Here we fit the CCL5 gene expression in melanoma. As
+illustrated in the histgram, CCL5 gene expression is fitted by two
 states. One is suppressed expression state (red), which is constited by
-low and zero expression. The other two are active expression state
-(green,blue) where the expression are with true biological
+low and zero expression. The other one is active expression state
+(green) where the expression are with true biological
 functionalities. We also retrieved cell annotation from original paper.
 In the dot plot, we highlighted the enrichment of different cell type in
 different expression states.The color level indicates the mean
