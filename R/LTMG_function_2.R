@@ -496,29 +496,30 @@ plot_dot<-function(VEC,Data_LTMG,cell_key,Zcut,Gene=NA){
 
 
 LTMG_MAT<-function(MAT,Zcut_G,Gene_use,k=5){
+  
   LTMG_Res<-list(State=matrix(0,nrow = length(Gene_use),ncol = ncol(MAT)),
                  A_MAT=matrix(0,nrow = length(Gene_use),ncol = k),
                  U_MAT=matrix(0,nrow = length(Gene_use),ncol = k),
                  S_MAT=matrix(0.0001,nrow = length(Gene_use),ncol = k))
-
+  
   SEQ<-floor(seq(from = 1,to = length(Gene_use),length.out = 11))
-
-
+  
+  
   for (i in 1:length(Gene_use)) {
-
+    
     if(i %in% SEQ){
       cat(paste0("Progress:",(grep("T",SEQ==i)-1)*10,"%\n" ))
-    }
-
+    }  
+    
     VEC<-MAT[Gene_use[i],]
-
+    
     y<-log(VEC)
     y<-y+rnorm(length(y),0,0.0001)
     Zcut<-min(log(VEC[VEC>0]))
     if(Zcut<Zcut_G){
       Zcut<-Zcut_G
     }
-
+    
     if(all(VEC>Zcut_G)){
       rrr<-matrix(c(1,mean(y[y>=Zcut]),sd(y[y>=Zcut])),nrow = 1,ncol = 3)
       MARK<-BIC_ZIMG(y,rrr,Zcut)
@@ -551,24 +552,31 @@ LTMG_MAT<-function(MAT,Zcut_G,Gene_use,k=5){
         }, error=function(e){})
       }
     }
-
-    rrr_LTMG<-rrr_LTMG[order(rrr_LTMG[,2]),]
-    rrr_use<-matrix(as.numeric(rrr_LTMG),ncol=3,byrow=F)
-
-    y_use<-y[y>Zcut]
-    y_value<-NULL
-    for (k in 1:nrow(rrr_use)) {
-      TEMP<-dnorm(y_use,mean = rrr_use[k,2],sd = rrr_use[k,3])*rrr_use[k,1]
-      y_value<-rbind(y_value,TEMP)
+    
+    if(min(dim(rrr_LTMG))==1){
+      y_state<-rep(1,length(y))
+    }else{
+      rrr_LTMG<-rrr_LTMG[order(rrr_LTMG[,2]),]
+      rrr_use<-matrix(as.numeric(rrr_LTMG),ncol=3,byrow=F)
+      
+      y_use<-y[y>Zcut]
+      y_value<-NULL
+      for (k in 1:nrow(rrr_use)) {
+        TEMP<-dnorm(y_use,mean = rrr_use[k,2],sd = rrr_use[k,3])*rrr_use[k,1]
+        y_value<-rbind(y_value,TEMP)
+      }
+      y_state<-rep(0,length(y))
+      y_state[y>Zcut]<-apply(y_value,2,State_return)-1
     }
-    y_state<-rep(0,length(y))
-    y_state[y>Zcut]<-apply(y_value,2,State_return)-1
-
+    
+    
     LTMG_Res[[1]][i,]<-y_state
     LTMG_Res[[2]][i,1:nrow(rrr_LTMG)]<-rrr_LTMG[,1]
     LTMG_Res[[3]][i,1:nrow(rrr_LTMG)]<-rrr_LTMG[,2]
     LTMG_Res[[4]][i,1:nrow(rrr_LTMG)]<-rrr_LTMG[,3]
   }
+  
+  
   rownames(LTMG_Res[[1]])<-Gene_use
   rownames(LTMG_Res[[2]])<-Gene_use
   rownames(LTMG_Res[[3]])<-Gene_use
