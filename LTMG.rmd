@@ -18,7 +18,7 @@ A key challenge in modeling single-cell RNA-seq data is to capture the diversity
 We have received great number of feedbacks since the publish of our work. Here we provide this update package of LTMG with much convenient interfaces and command lines.
 ```{r Installation}
 #install.packages("devtools")
-#devtools::install_github("clwan/LTMGSCA",force=TRUE)
+#devtools::install_github("clwan/LTMG",force=TRUE)
 ```
 
 
