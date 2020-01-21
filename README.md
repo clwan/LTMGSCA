@@ -121,7 +121,7 @@ cells in each expression state, respect the cell types.
     VEC_LTMG<-LTMG(VEC,Zcut_G,k=5)
 
     ### Visualize the LTMG gene expression distribution
-    plot_gene(VEC = VEC,Data_LTMG = VEC_LTMG,Zcut = Zcut_G)
+    plot_gene(VEC = VEC,Data_LTMG = VEC_LTMG,Zcut = Zcut_G,Gene=Gene)
 
 ![](LTMG_files/figure-markdown_strict/Gene_hist.png)
 
