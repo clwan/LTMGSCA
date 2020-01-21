@@ -31,7 +31,7 @@ work. Here we provide this update package of LTMG with much convenient
 interfaces and command lines.
 
     #install.packages("devtools")
-    #devtools::install_github("clwan/LTMGSCA",force=TRUE)
+    #devtools::install_github("clwan/LTMG",force=TRUE)
 
 Process Input
 -------------
