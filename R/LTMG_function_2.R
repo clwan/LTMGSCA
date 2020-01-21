@@ -402,19 +402,19 @@ find_intersect<-function(aaa){
 
 
 
-plot_gene<-function(VEC,Data_LTMG,Zcut=-Inf,breaks0=30){
+plot_gene<-function(VEC,Data_LTMG,Zcut=-Inf,breaks0=30,Gene=NA){
   if(log(min(VEC[VEC>0]))>Zcut){
     Zcut<-log(min(VEC[VEC>0]))
   }
-
+  
   aaa<-t(Data_LTMG)
-
-
+  
+  
   y<-VEC*0
   y[VEC>Zcut]<-log(VEC[VEC>Zcut])
   y[VEC<=Zcut]<-aaa[2,1]
-
-
+  
+  
   mm<-min(y)
   MM<-max(y)
   diff_c<-MM-mm
@@ -424,8 +424,14 @@ plot_gene<-function(VEC,Data_LTMG,Zcut=-Inf,breaks0=30){
   h<-hist(y,breaks=breaks0,plot = F)
   nn<-max(h$counts)
   h0<-hist(y[which(y>Zcut)],breaks=breaks0,plot=F)
-  plot(h,xlim=c(mm+1,MM-1),ylim=c(0,nn),border="white",col="lightblue",main=Gene)
-
+  
+  if(is.na(Gene)){
+    plot(h,xlim=c(mm+1,MM-1),ylim=c(0,nn),border="white",col="lightblue")
+  }else{
+    plot(h,xlim=c(mm+1,MM-1),ylim=c(0,nn),border="white",col="lightblue",main=Gene)
+  }
+  
+  
   n<-length(y)*(h$breaks[2]-h$breaks[1])
   z0<-rep(0,length(x))
   for(i in 1:ncol(aaa))
@@ -434,10 +440,10 @@ plot_gene<-function(VEC,Data_LTMG,Zcut=-Inf,breaks0=30){
     abline(v=aaa[2,i],col=c(i+1),lwd=2)
     points(z~x,type="l",col=c(i+1),lwd=5,lty=2)
     z0<-z0+z
-
+    
   }
 }
-
+                               
 plot_dot<-function(VEC,Data_LTMG,cell_key,Zcut,Gene=NA){
   y<-log(VEC)
 
