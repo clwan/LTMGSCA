@@ -47,7 +47,7 @@ log normalized) and Zcut. We also inhereted the Read10X functions from
 dataset](https://science.sciencemag.org/content/352/6282/189.long).
 
     ### The R packages involved in LTMG package
-    library(LTMGSCA)
+    library(LTMG)
     library(Matrix)
     library(dplyr)
 
