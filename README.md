@@ -31,7 +31,7 @@ work. Here we provide this update package of LTMG with much convenient
 interfaces and command lines.
 
     #install.packages("devtools")
-    #devtools::install_github("clwan/LTMG",force=TRUE)
+    #devtools::install_github("clwan/LTMGSCA",force=TRUE)
 
 Process Input
 -------------
@@ -47,7 +47,7 @@ log normalized) and Zcut. We also inhereted the Read10X functions from
 dataset](https://science.sciencemag.org/content/352/6282/189.long).
 
     ### The R packages involved in LTMG package
-    library(LTMG)
+    library(LTMGSCA)
     library(Matrix)
     library(dplyr)
 
