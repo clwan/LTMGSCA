@@ -21,7 +21,7 @@ Y., Zhang, A., Cao, S., Fishel, M.L., Ma, Q. and Zhang, C., 2019. LTMG:
 a novel statistical modeling of transcriptional expression states in
 single-cell RNA-Seq data. Nucleic acids research, 47(18),
 pp.e111-e111.\]
-(<a href="https://academic.oup.com/nar/article/47/18/e111/5542876" class="uri">https://academic.oup.com/nar/article/47/18/e111/5542876</a>).
+(<a href="https://academic.oup.com/nar/article/47/18/e111/5542876" class="uri">https://academic.oup.com/nar/article/47/18/e111/5542876</a>). If you have any question, please kindly email wancl0422@gmail or wan82@purdue.edu for faster reply. I did not get notified by github issues.
 
 Installation
 ------------
